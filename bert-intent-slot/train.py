@@ -165,7 +165,9 @@ def train(args):
                 optimizer.step()
                 scheduler.step()
                 model.zero_grad()
-
+                
+        print(f'Epoch {epoch + 1}, Loss: {loss.item()}')
+        
         train_loss = total_loss / len(train_dataloader)
 
         dev_acc, intent_avg, slot_avg = dev(model, val_dataloader, device, slot_dict)
